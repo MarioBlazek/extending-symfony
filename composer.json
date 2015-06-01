@@ -21,9 +21,9 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "willdurand/geocoder": "2.3.*",
+        "willdurand/geocoder": "2.8.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "phpunit/phpunit": "3.*"
+        "phpunit/phpunit": "4.6.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
