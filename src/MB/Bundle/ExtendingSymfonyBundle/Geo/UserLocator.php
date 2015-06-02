@@ -7,18 +7,22 @@ use Geocoder\Geocoder;
 
 class UserLocator
 {
-	protected $geocoder;
-
 	protected $userIp;
 
-	public function __construct(Geocoder $geocoder, Request $request)
+	protected $geocoders = [];
+
+	public function __construct(Request $request)
 	{
-		$this->geocoder = $geocoder;
 		$this->userIp = $request->getClientIp();
 
 		if ($this->userIp == '127.0.0.1') {
 			$this->userIp = '114.247.144.250';
 		}
+	}
+
+	public function addGeocoder(Geocoder $geocoder)
+	{
+		$this->geocoders[] = $geocoder;
 	}
 
 	public function getUserGeoBoundaries($precision = 0.3)
@@ -33,5 +37,10 @@ class UserLocator
 
 		return ['lat_max' => $latMax, 'lat_min' => $latMin,
 			'long_max' => $longMax, 'long_min' => $longMin];
+	}
+
+	public function getBestGeocoder()
+	{
+		// @TODO find best geocoder
 	}
 }

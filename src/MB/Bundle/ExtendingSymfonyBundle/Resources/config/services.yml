@@ -16,7 +16,18 @@ services:
         calls:
             - [ registerProviders, [[ @geocoder_provider ]] ]
 
-    user_locator:
+    freegeoip_geocoder:
+        class: MB\Bundle\ExtendingSymfonyBundle\Geo\FreeGeoIpGeocoder
+        arguments: [ @geocoder ]
+        tags:
+            - { name: mb.geocoder }
+
+    random_geocoder:
+        class: MB\Bundle\ExtendingSymfonyBundle\Geo\RandomLocationGeocoder
+        tags:
+            - { name: mb.geocoder }
+
+    mb.user_locator:
         class: MB\Bundle\ExtendingSymfonyBundle\Geo\UserLocator
         scope: request
         arguments: [ @geocoder, @request ]
