@@ -15,3 +15,8 @@ services:
         class: Geocoder\Geocoder
         calls:
             - [ registerProviders, [[ @geocoder_provider ]] ]
+
+    user_locator:
+        class: MB\Bundle\ExtendingSymfonyBundle\Geo\UserLocator
+        scope: request
+        arguments: [ @geocoder, @request ]
