@@ -5,3 +5,7 @@ mb_extending_symfony_event:
 mb_extending_symfony_homepage:
     path:     /hello/{name}
     defaults: { _controller: MBExtendingSymfonyBundle:Default:index }
+
+mb_geo_index:
+    path:     /
+    defaults: { _controller: MBExtendingSymfonyBundle:Geo:index }
