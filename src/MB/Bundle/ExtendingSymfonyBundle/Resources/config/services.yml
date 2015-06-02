@@ -2,3 +2,16 @@ services:
 #    mb_extending_symfony.example:
 #        class: MB\Bundle\ExtendingSymfonyBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    geocoder_adapter:
+        class: Geocoder\HttpAdapter\CurlHttpAdapter
+        public: false
+
+    geocoder_provider:
+        class: Geocoder\Provider\FreeGeoIpProvider
+        public: false
+        arguments: [ @geocoder_adapter ]
+
+    geocoder:
+        class: Geocoder\Geocoder
+        calls:
+            - [ registerProviders, [[ @geocoder_provider ]] ]
