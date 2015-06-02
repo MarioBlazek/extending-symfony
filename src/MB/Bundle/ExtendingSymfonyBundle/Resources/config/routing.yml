@@ -9,3 +9,7 @@ mb_extending_symfony_homepage:
 mb_geo_index:
     path:     /
     defaults: { _controller: MBExtendingSymfonyBundle:Geo:index }
+
+mb_geo_event_join:
+    path: /event/join
+    defaults: { _controller: MBExtendingSymfonyBundle:Geo:join }

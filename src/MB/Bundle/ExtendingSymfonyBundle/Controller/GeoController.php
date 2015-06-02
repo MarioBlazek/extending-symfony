@@ -2,6 +2,7 @@
 
 namespace MB\Bundle\ExtendingSymfonyBundle\Controller;
 
+use MB\Bundle\ExtendingSymfonyBundle\Form\Type\JoinEventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class GeoController extends Controller
@@ -24,6 +25,34 @@ class GeoController extends Controller
 
         return $this->render('MBExtendingSymfonyBundle:Geo:index.html.twig', array(
 			'events' => $events,
+		));
+	}
+
+	public function joinAction($eventId)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$meetup = $em->getRepository('MBExtendingSymfonyBundle:Event')->find($eventId);
+
+		$form = $this->createForm(new JoinEventType(), $meetup, array(
+			'action' => '',
+			'method' => 'POST'
+		));
+
+		$form->add('submit', 'submit', array('label' => 'Join'));
+
+		$form->handleRequest($this->get('request'));
+
+		$user = $this->get('security.authorization_checker')->getToken()->getUser();
+
+		if ( $form->isValid() ) {
+			$meetup->addAttendee($user);
+			$em->flush();
+		}
+
+		return $this->render('MBExtendingSymfonyBundle:Geo:index.html.twig', array(
+			'meetup' => $meetup,
+			'user'	 => $user,
+			'form' 	 => $form->createView(),
 		));
 	}
 
