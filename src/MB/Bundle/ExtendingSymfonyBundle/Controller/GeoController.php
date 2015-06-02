@@ -2,6 +2,8 @@
 
 namespace MB\Bundle\ExtendingSymfonyBundle\Controller;
 
+use MB\Bundle\ExtendingSymfonyBundle\Event\MeetupEvent;
+use MB\Bundle\ExtendingSymfonyBundle\Event\MeetupEvents;
 use MB\Bundle\ExtendingSymfonyBundle\Form\Type\JoinEventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -46,6 +48,7 @@ class GeoController extends Controller
 
 		if ( $form->isValid() ) {
 			$meetup->addAttendee($user);
+			$this->get('event_dispatcher')->dispatch(MeetupEvents::MEETUP_JOIN, new MeetupEvent($user, $meetup));
 			$em->flush();
 		}
 

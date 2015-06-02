@@ -20,3 +20,9 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Geo\UserLocator
         scope: request
         arguments: [ @geocoder, @request ]
+
+    join_meetup_listener:
+        class: MB\Bundle\ExtendingSymfonyBundle\Event\JoinMeetupListener
+        tags:
+            - { name: kernel.event_listener, event: meetup.join, method: onUserJoinsMeetup }
+            - { name: kernel.event_listener, event: kernel.terminate, method: generatePreferences }
