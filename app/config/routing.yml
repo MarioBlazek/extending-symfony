@@ -1,3 +1,7 @@
+mb_extending_symfony:
+    resource: "@MBExtendingSymfonyBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
