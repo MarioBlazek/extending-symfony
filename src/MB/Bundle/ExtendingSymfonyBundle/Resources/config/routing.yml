@@ -11,5 +11,5 @@ mb_geo_index:
     defaults: { _controller: MBExtendingSymfonyBundle:Geo:index }
 
 mb_geo_event_join:
-    path: /event/join
+    path: /event/{eventId}/join
     defaults: { _controller: MBExtendingSymfonyBundle:Geo:join }

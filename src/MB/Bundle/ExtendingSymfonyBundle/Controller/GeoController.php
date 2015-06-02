@@ -11,8 +11,7 @@ class GeoController extends Controller
 {
     public function indexAction()
     {
-		$boundaries = $this->get('user_locator')->getUserGeoBoundaries();
-
+		$boundaries = $this->get('mb.user_locator')->getUserGeoBoundaries();
 		$em = $this->getDoctrine()->getManager();
 		$qb = $em->createQueryBuilder();
 		$qb->select('e')
@@ -23,7 +22,7 @@ class GeoController extends Controller
 			->andWhere('e.longitude > :long_min')
 			->setParameters($boundaries);
 
-		$events = $qb->getQuery()->execute();
+		$events = $qb->getQuery()->getResult();
 
         return $this->render('MBExtendingSymfonyBundle:Geo:index.html.twig', array(
 			'events' => $events,
@@ -44,7 +43,7 @@ class GeoController extends Controller
 
 		$form->handleRequest($this->get('request'));
 
-		$user = $this->get('security.authorization_checker')->getToken()->getUser();
+		$user = $this->get('security.context')->getToken()->getUser();
 
 		if ( $form->isValid() ) {
 			$meetup->addAttendee($user);

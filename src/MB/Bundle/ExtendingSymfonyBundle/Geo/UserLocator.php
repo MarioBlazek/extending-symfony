@@ -3,28 +3,52 @@
 namespace MB\Bundle\ExtendingSymfonyBundle\Geo;
 
 use Symfony\Component\HttpFoundation\Request;
-use Geocoder\Geocoder;
 
 class UserLocator
 {
+	/**
+	 * @var string
+	 */
 	protected $userIp;
 
-	protected $geocoders = [];
+	/**
+	 * @var Geocoder
+	 */
+	protected $geocoder;
 
+	/**
+	 * Constructor
+	 *
+	 * @param Request $request
+	 */
 	public function __construct(Request $request)
 	{
 		$this->userIp = $request->getClientIp();
 
 		if ($this->userIp == '127.0.0.1') {
+			// probabbly here would be better if get external ip address
+			// from some service like ip chicken
 			$this->userIp = '114.247.144.250';
 		}
 	}
 
-	public function addGeocoder(Geocoder $geocoder)
+	/**
+	 * Set Geocoder
+	 *
+	 * @param Geocoder $geocoder
+	 */
+	public function setGeocoder(Geocoder $geocoder)
 	{
-		$this->geocoders[] = $geocoder;
+		$this->geocoder = $geocoder;
 	}
 
+	/**
+	 * Calculate boundaries
+	 *
+	 * @param float $precision
+	 *
+	 * @return array
+	 */
 	public function getUserGeoBoundaries($precision = 0.3)
 	{
 		$result = $this->geocoder->geocode($this->userIp);
@@ -37,10 +61,5 @@ class UserLocator
 
 		return ['lat_max' => $latMax, 'lat_min' => $latMin,
 			'long_max' => $longMax, 'long_min' => $longMin];
-	}
-
-	public function getBestGeocoder()
-	{
-		// @TODO find best geocoder
 	}
 }

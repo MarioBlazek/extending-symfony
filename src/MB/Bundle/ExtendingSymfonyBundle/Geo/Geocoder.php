@@ -4,7 +4,12 @@ namespace MB\Bundle\ExtendingSymfonyBundle\Geo;
 
 interface Geocoder
 {
-	public function getAccuracy();
-
+	/**
+	 * Find geo coordinates from IP address
+	 *
+	 * @param string $ip
+	 *
+	 * @return array
+	 */
 	public function geocode($ip);
 }

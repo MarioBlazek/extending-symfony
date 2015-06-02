@@ -11,16 +11,23 @@ class FreeGeoIpGeocoder implements Geocoder
 	 */
 	private $geocoder;
 
+	/**
+	 * Constructor
+	 *
+	 * @param IpGeocoder $geocoder
+	 */
 	public function __construct(IpGeocoder $geocoder)
 	{
 		$this->geocoder = $geocoder;
 	}
 
-	public function getAccuracy()
-	{
-		return 100;
-	}
-
+	/**
+	 * Find geo coordinates from IP address
+	 *
+	 * @param string $ip
+	 *
+	 * @return array
+	 */
 	public function geocode($ip)
 	{
 		return $this->geocoder->geocode($ip);

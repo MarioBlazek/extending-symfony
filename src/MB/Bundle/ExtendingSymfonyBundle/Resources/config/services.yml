@@ -20,17 +20,17 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Geo\FreeGeoIpGeocoder
         arguments: [ @geocoder ]
         tags:
-            - { name: mb.geocoder }
+            - { name: mb.geocoder, accuracy: 100 }
 
     random_geocoder:
         class: MB\Bundle\ExtendingSymfonyBundle\Geo\RandomLocationGeocoder
         tags:
-            - { name: mb.geocoder }
+            - { name: mb.geocoder, accuracy: 0 }
 
     mb.user_locator:
         class: MB\Bundle\ExtendingSymfonyBundle\Geo\UserLocator
         scope: request
-        arguments: [ @geocoder, @request ]
+        arguments: [ @request ]
 
     join_meetup_listener:
         class: MB\Bundle\ExtendingSymfonyBundle\Event\JoinMeetupListener

@@ -26,8 +26,16 @@ class UserLocatorPass implements CompilerPassInterface
 		$serviceDefinition = $container->getDefinition('mb.user_locator');
 		$tagged = $container->findTaggedServiceIds('mb.geocoder');
 
+		$highestAccuracy = 0;
+		$highestAccuracyId = 0;
 		foreach ($tagged as $id => $attrs) {
-			$serviceDefinition->addMethodCall('addGeocoder', [ new Reference($id) ]);
+
+			if ($attrs[0]['accuracy'] > $highestAccuracy) {
+				$highestAccuracy = $attrs[0]['accuracy'];
+				$highestAccuracyId = $id;
+			}
 		}
+
+		$serviceDefinition->addMethodCall('setGeocoder', [ new Reference($highestAccuracyId) ]);
 	}
 }
