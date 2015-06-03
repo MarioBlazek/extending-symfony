@@ -37,3 +37,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: meetup.join, method: onUserJoinsMeetup }
             - { name: kernel.event_listener, event: kernel.terminate, method: generatePreferences }
+
+    imagine:
+        class: Imagine\Gd\Imagine
+
+    mb.shrinker:
+        class: MB\Bundle\ExtendingSymfonyBundle\Command\Shrinker
+        arguments: [ @imagine ]

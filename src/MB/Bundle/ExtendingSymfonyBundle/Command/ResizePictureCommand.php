@@ -28,14 +28,9 @@ class ResizePictureCommand extends ContainerAwareCommand
 		$size = $input->getOption('size') ?: 300;
 		$out = $input->getOption('out');
 
-		$imagine = new Imagine();
-		$image = $imagine->open($path);
-		$box = new Box($size, $size);
-
-		$filename = basename($path);
-
-		// resize
-		$image->resize($box)->save($out.'/'.$filename);
+		$this->getContainer()
+			->get('mb.shrinker')
+			->shrinkImage($path, $out, $size);
 
 		$output->writeln(sprintf('%s --> %s', $path, $out));
 	}
