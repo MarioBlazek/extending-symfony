@@ -4,6 +4,7 @@ namespace MB\Bundle\ExtendingSymfonyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="mb_user")
  * @ORM\Entity
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
@@ -20,18 +21,24 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 	/**
 	 * @ORM\ManyToMany(targetEntity="Event", mappedBy="attendees")
 	 */
-	private $events;
+	protected $events;
+
+	/**
+	 * @ORM\Column(type="string", length=255, name="picture")
+	 */
+	protected $picture;
 
 	/**
      * Constructor
      */
     public function __construct()
     {
+		parent::__construct();
         $this->events = new ArrayCollection();
     }
 
@@ -76,5 +83,28 @@ class User
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
