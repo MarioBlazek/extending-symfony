@@ -44,3 +44,8 @@ services:
     mb.shrinker:
         class: MB\Bundle\ExtendingSymfonyBundle\Command\Shrinker
         arguments: [ @imagine ]
+
+    mb.twig.js_extension:
+        class: MB\Bundle\ExtendingSymfonyBundle\Twig\JSExtension
+        tags:
+            - { name: twig.extension }
