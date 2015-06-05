@@ -49,3 +49,8 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Twig\JSExtension
         tags:
             - { name: twig.extension }
+
+    mb.twig.date_diff_extension:
+        class: MB\Bundle\ExtendingSymfonyBundle\Twig\DateDifferenceExtension
+        tags:
+            - { name: twig.extension }
