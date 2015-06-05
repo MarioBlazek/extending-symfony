@@ -54,3 +54,8 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Twig\DateDifferenceExtension
         tags:
             - { name: twig.extension }
+
+    mb.twig.date_diff_filter_extension:
+        class: MB\Bundle\ExtendingSymfonyBundle\Twig\DateDifferenceFilterExtension
+        tags:
+            - { name: twig.extension }
