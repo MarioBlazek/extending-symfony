@@ -12,8 +12,8 @@ class Coordinate extends GMCoordinate
 
 	public function __construct($latitude = null, $longitude = null)
 	{
-		$this->latitude = $latitude;
-		$this->longitude = $longitude;
+		$this->latitude = floatval($latitude);
+		$this->longitude = floatval($longitude);
 	}
 
 	/**

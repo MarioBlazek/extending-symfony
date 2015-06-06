@@ -62,4 +62,24 @@ class UserLocator
 		return ['lat_max' => $latMax, 'lat_min' => $latMin,
 			'long_max' => $longMax, 'long_min' => $longMin];
 	}
+
+	/**
+	 * Get current user coordinates
+	 *
+	 * @return array
+	 */
+	public function getUserCoordinates()
+	{
+		return $this->geocoder->geocode($this->userIp);
+	}
+
+	/**
+	 * Get country code for given IP
+	 *
+	 * @return mixed
+	 */
+	public function getCountryCode()
+	{
+		return $this->geocoder->geocode($this->userIp)->getCountryCode();
+	}
 }

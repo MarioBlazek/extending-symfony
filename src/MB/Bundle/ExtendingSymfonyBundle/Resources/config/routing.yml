@@ -15,5 +15,9 @@ mb_geo_event_join:
     defaults: { _controller: MBExtendingSymfonyBundle:Geo:join }
 
 mb_coordinate_form:
-    path: /form
+    path: /map
     defaults: { _controller: MBExtendingSymfonyBundle:Form:map }
+
+mb_address_form:
+    path: /address
+    defaults: { _controller: MBExtendingSymfonyBundle:Address:address }

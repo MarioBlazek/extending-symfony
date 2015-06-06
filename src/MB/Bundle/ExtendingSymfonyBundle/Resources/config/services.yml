@@ -63,6 +63,6 @@ services:
     mb.form.type.coordinate:
         class: MB\Bundle\ExtendingSymfonyBundle\Form\Type\CoordinateType
         scope: prototype
-        arguments: [ @ivory_google_map.map ]
+        arguments: [ @ivory_google_map.map, @mb.user_locator ]
         tags:
             - { name: form.type, alias: mb_coordinate }
