@@ -24,7 +24,8 @@
         "willdurand/geocoder": "2.8.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "phpunit/phpunit": "4.6.*",
-        "imagine/imagine": "0.6.*"
+        "imagine/imagine": "0.6.*",
+        "egeloen/google-map-bundle": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
