@@ -13,3 +13,7 @@ mb_geo_index:
 mb_geo_event_join:
     path: /event/{eventId}/join
     defaults: { _controller: MBExtendingSymfonyBundle:Geo:join }
+
+mb_coordinate_form:
+    path: /form
+    defaults: { _controller: MBExtendingSymfonyBundle:Form:map }

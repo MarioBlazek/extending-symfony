@@ -59,3 +59,10 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Twig\DateDifferenceFilterExtension
         tags:
             - { name: twig.extension }
+
+    mb.form.type.coordinate:
+        class: MB\Bundle\ExtendingSymfonyBundle\Form\Type\CoordinateType
+        scope: prototype
+        arguments: [ @ivory_google_map.map ]
+        tags:
+            - { name: form.type, alias: mb_coordinate }
