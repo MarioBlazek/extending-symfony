@@ -6,6 +6,7 @@ use MB\Bundle\ExtendingSymfonyBundle\Event\MeetupEvent;
 use MB\Bundle\ExtendingSymfonyBundle\Event\MeetupEvents;
 use MB\Bundle\ExtendingSymfonyBundle\Form\Type\JoinEventType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use MB\Bundle\ExtendingSymfonyBundle\Security\Annotation\ValidateUser;
 
 class GeoController extends Controller
 {
@@ -29,8 +30,19 @@ class GeoController extends Controller
 		));
 	}
 
+	/**
+	 * @ValidateUser("join_event")
+	 *
+	 * @param $eventId
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function joinAction($eventId)
 	{
+		$reader = $this->get('annotation_reader');
+		$method = new \ReflectionMethod(get_class($this), 'joinAction');
+		$annotationName = 'MB\Bundle\ExtendingSymfonyBundle\Security\Annotation\ValidateUser';
+		$annotation = $reader->getMethodAnnotation($method, $annotationName);
+
 		$em = $this->getDoctrine()->getManager();
 		$meetup = $em->getRepository('MBExtendingSymfonyBundle:Event')->find($eventId);
 

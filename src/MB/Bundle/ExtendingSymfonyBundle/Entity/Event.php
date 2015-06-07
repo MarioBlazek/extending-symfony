@@ -4,6 +4,7 @@ namespace MB\Bundle\ExtendingSymfonyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Event
@@ -47,6 +48,12 @@ class Event
 	 * @ORM\ManyToMany(targetEntity="User", inversedBy="events")
 	 */
 	private $attendees;
+
+	/**
+	 * @ORM\Column(type="string", length=255, name="phone")
+	 * @Assert\NotBlank(groups={"join_event"})
+	 */
+	protected $phone;
 
     /**
      * Constructor
@@ -167,5 +174,28 @@ class Event
     public function getAttendees()
     {
         return $this->attendees;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Event
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

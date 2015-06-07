@@ -78,3 +78,16 @@ services:
     mb.github.authentication_provider:
         class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\AuthenticationProvider
         public: false
+
+    mb.security.access.country_voter:
+        class: MB\Bundle\ExtendingSymfonyBundle\Security\Voters\CountryVoter
+        public: false
+        arguments: [ @service_container ]
+        tags:
+            - { name: security.voter }
+
+    mb.security.access.valid_user:
+        class: MB\Bundle\ExtendingSymfonyBundle\Security\ValidUserListener
+        arguments: [ @annotation_reader, @router, @session, @security.context, @validator ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
