@@ -25,7 +25,10 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "phpunit/phpunit": "4.6.*",
         "imagine/imagine": "0.6.*",
-        "egeloen/google-map-bundle": "~2.2"
+        "egeloen/google-map-bundle": "~2.2",
+        "doctrine/mongodb-odm": "~1.0.0-beta10@dev",
+        "doctrine/mongodb-odm-bundle": "~3.0",
+        "guzzle/guzzle": "~3.9"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
