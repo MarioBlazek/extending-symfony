@@ -21,3 +21,10 @@ mb_coordinate_form:
 mb_address_form:
     path: /address
     defaults: { _controller: MBExtendingSymfonyBundle:Address:address }
+
+mb_github_login_auth:
+    path: /github
+    defaults: { _controller: MBExtendingSymfonyBundle:Auth:githubLogin }
+
+mb_github_login:
+    path: /github_login

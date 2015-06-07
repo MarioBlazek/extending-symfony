@@ -28,6 +28,9 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
+            github:
+                provider: fos_userbundle
+                check_path: /github_login
             logout: true
             anonymous: true
 

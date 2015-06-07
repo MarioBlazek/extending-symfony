@@ -66,3 +66,15 @@ services:
         arguments: [ @ivory_google_map.map, @mb.user_locator ]
         tags:
             - { name: form.type, alias: mb_coordinate }
+
+    mb.github.authentication_listener:
+        class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\AuthenticationListener
+        calls:
+            - [ setSecurityParameters, [ "%github_client_id%", "%github_client_secret%" ] ]
+        parent: security.authentication.listener.abstract
+        abstract: true
+        public: false
+
+    mb.github.authentication_provider:
+        class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\AuthenticationProvider
+        public: false
