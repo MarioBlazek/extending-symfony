@@ -91,3 +91,8 @@ services:
         arguments: [ @annotation_reader, @router, @session, @security.context, @validator ]
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    mb.security.access.api:
+        class: MB\Bundle\ExtendingSymfonyBundle\Security\ApiCustomListener
+        tags:
+            - { name: kernel.event_listener, event:kernel.request, method: onKernelRequest }

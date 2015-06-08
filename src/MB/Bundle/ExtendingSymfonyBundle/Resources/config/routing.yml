@@ -28,3 +28,7 @@ mb_github_login_auth:
 
 mb_github_login:
     path: /github_login
+
+mb_api_status:
+    path: /api/status
+    defaults: { _controller: MBExtendingSymfonyBundle:Api:api }
