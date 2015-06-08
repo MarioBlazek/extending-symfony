@@ -7,6 +7,8 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
+        github_provider:
+            id: mb.github.user_provider
 
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
@@ -31,7 +33,8 @@ security:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
             github:
-                provider: fos_userbundle
+                #provider: fos_userbundle
+                provider: github_provider
                 check_path: /github_login
             logout: true
             anonymous: true
