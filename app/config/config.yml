@@ -66,6 +66,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        dql:
+            numeric_functions:
+                distance: MB\Bundle\ExtendingSymfonyBundle\Doctrine\DistanceFunction
 
 doctrine_mongodb:
     connections:

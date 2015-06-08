@@ -100,3 +100,9 @@ services:
     mb.github.user_provider:
         class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\UserProvider
         arguments: [ @fos_user.user_manager ]
+
+    mb.doctrine.versionable:
+        class: MB\Bundle\ExtendingSymfonyBundle\Doctrine\VersionableListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

@@ -4,6 +4,7 @@ namespace MB\Bundle\ExtendingSymfonyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use MB\Bundle\ExtendingSymfonyBundle\Doctrine\Versionable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Event
 {
+	use Versionable;
+
     /**
      * @var integer
      *
