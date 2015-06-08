@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 			new FOS\UserBundle\FOSUserBundle(),
 			new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+			new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new MB\Bundle\ExtendingSymfonyBundle\MBExtendingSymfonyBundle(),
         );
 
