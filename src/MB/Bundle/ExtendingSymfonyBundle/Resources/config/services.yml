@@ -106,3 +106,9 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+
+    mb.doctrine.owned_entity.listener:
+        class: MB\Bundle\ExtendingSymfonyBundle\Doctrine\OwnerListener
+        arguments: [ @doctrine, @security.context ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: updateFilter }

@@ -66,6 +66,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        filters:
+            - { name: owner_filter, class: MB\Bundle\ExtendingSymfonyBundle\Doctrine\OwnerFilter, enabled: false }
         dql:
             numeric_functions:
                 distance: MB\Bundle\ExtendingSymfonyBundle\Doctrine\DistanceFunction
