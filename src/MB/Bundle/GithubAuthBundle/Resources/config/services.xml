@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="mb_github_auth.client_id"></parameter>
+        <parameter key="mb_github_auth.client_secret"></parameter>
+        <parameter key="mb_github_auth.authentication_provider_class">MB\Bundle\GithubAuthBundle\Security\Github\AuthenticationProvider</parameter>
+        <parameter key="mb_github_auth.user_provider_class">MB\Bundle\GithubAuthBundle\Security\Github\UserProvider</parameter>
+        <parameter key="mb_github_auth.authentication_listener_class">MB\Bundle\GithubAuthBundle\Security\Github\AuthenticationListener</parameter>
+    </parameters>
+    
+    <services>
+        <service
+                id="mb.github.authentication_provider"
+                class="%mb_github_auth.authentication_provider_class%"
+                public="false">
+        </service>
+        <service
+                id="mb.github.user_provider"
+                class="%mb_github_auth.user_provider_class%">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service
+                id="mb.github.authentication_listener"
+                class="%mb_github_auth.authentication_listener_class%"
+                parent="security.authentication.listener.abstract"
+                abstract="true"
+                public="false">
+            <call method="setSecurityParameters">
+                <argument>%mb_github_auth.client_id%</argument>
+                <argument>%mb_github_auth.client_secret%</argument>
+            </call>
+        </service>
+    </services>
+</container>

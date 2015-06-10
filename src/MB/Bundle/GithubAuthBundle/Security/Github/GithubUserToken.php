@@ -1,6 +1,6 @@
 <?php
 
-namespace MB\Bundle\ExtendingSymfonyBundle\Security\Github;
+namespace MB\Bundle\GithubAuthBundle\Security\Github;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 

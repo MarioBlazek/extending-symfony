@@ -1,6 +1,6 @@
 <?php
 
-namespace MB\Bundle\ExtendingSymfonyBundle\Security\Github;
+namespace MB\Bundle\GithubAuthBundle\Security\Github;
 
 use Guzzle\Http\Client;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,3 +1,7 @@
+mb_github_auth:
+    resource: "@MBGithubAuthBundle/Resources/config/routing.xml"
+    prefix:   /
+
 mb_extending_symfony:
     resource: "@MBExtendingSymfonyBundle/Resources/config/routing.yml"
     prefix:   /

@@ -67,18 +67,6 @@ services:
         tags:
             - { name: form.type, alias: mb_coordinate }
 
-    mb.github.authentication_listener:
-        class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\AuthenticationListener
-        calls:
-            - [ setSecurityParameters, [ "%github_client_id%", "%github_client_secret%" ] ]
-        parent: security.authentication.listener.abstract
-        abstract: true
-        public: false
-
-    mb.github.authentication_provider:
-        class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\AuthenticationProvider
-        public: false
-
     mb.security.access.country_voter:
         class: MB\Bundle\ExtendingSymfonyBundle\Security\Voters\CountryVoter
         public: false
@@ -96,10 +84,6 @@ services:
         class: MB\Bundle\ExtendingSymfonyBundle\Security\ApiCustomListener
         tags:
             - { name: kernel.event_listener, event:kernel.request, method: onKernelRequest }
-
-    mb.github.user_provider:
-        class: MB\Bundle\ExtendingSymfonyBundle\Security\Github\UserProvider
-        arguments: [ @fos_user.user_manager ]
 
     mb.doctrine.versionable:
         class: MB\Bundle\ExtendingSymfonyBundle\Doctrine\VersionableListener

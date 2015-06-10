@@ -95,3 +95,7 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: MB\Bundle\ExtendingSymfonyBundle\Entity\User
+
+mb_github_auth:
+    client_id: test
+    client_secret: test

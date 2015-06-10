@@ -20,6 +20,7 @@ class AppKernel extends Kernel
 			new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
 			new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new MB\Bundle\ExtendingSymfonyBundle\MBExtendingSymfonyBundle(),
+            new MB\Bundle\GithubAuthBundle\MBGithubAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
