@@ -28,7 +28,8 @@
         "egeloen/google-map-bundle": "~2.2",
         "doctrine/mongodb-odm": "~1.0.0-beta10@dev",
         "doctrine/mongodb-odm-bundle": "~3.0",
-        "guzzle/guzzle": "~3.9"
+        "guzzle/guzzle": "~3.9",
+        "mockery/mockery": "^0.9.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
