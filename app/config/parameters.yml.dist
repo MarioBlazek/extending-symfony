@@ -18,6 +18,4 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-    github_client_id: GithubClientId
-    github_client_secret: GithubClienSecret
 
